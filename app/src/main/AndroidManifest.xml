@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="samis.philly.steak">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- For checking current network state -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- For waking device from sleep for showing notification -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- For vibrating device -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <!-- For receiving GCM messages -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <!-- For protecting GCM messages so that only your app can receive them -->
+    <permission
+        android:name="com.androidsrc.gcmsample.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="com.androidsrc.gcmsample.permission.C2D_MESSAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="Sami\'s Philly Steak"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBQwPKSYIBzQ1_azvvr6THb1QFYj2aYaT4" />
+
+        <activity android:name="samis.philly.steak.MainActivity"
+            android:theme="@style/FirstScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+
+        <activity
+            android:name="samis.philly.steak.ResturantTabs"
+            android:label="Sami\'s Philly Steak"
+            >
+        </activity>
+
+        <receiver
+            android:name=".GCMBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                <category android:name="com.androidsrc.gcmsample" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+
+</manifest>
